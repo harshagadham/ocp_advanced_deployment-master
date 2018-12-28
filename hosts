@@ -79,32 +79,33 @@ nodes
 nfs
 
 [lb]
-loadbalancer1.GUID.internal
+loadbalancer.5049.internal
 
 [masters]
-master1.GUID.internal
-master2.GUID.internal
-master3.GUID.internal
+master1.5049.internal
+master2.5049.internal
+master3.5049.internal
 
 [etcd]
-master1.GUID.internal
-master2.GUID.internal
-master3.GUID.internal
+master1.5049.internal
+master2.5049.internal
+master3.5049.internal
 
 [nodes]
 ## These are the masters
-master1.GUID.internal openshift_hostname=master1.GUID.internal openshift_node_labels="{'env':'master', 'cluster': 'GUID'}"
-master2.GUID.internal openshift_hostname=master2.GUID.internal openshift_node_labels="{'env':'master', 'cluster': 'GUID'}"
-master3.GUID.internal openshift_hostname=master3.GUID.internal openshift_node_labels="{'env':'master', 'cluster': 'GUID'}"
+master1.5049.internal openshift_hostname=master1.5049.internal openshift_node_labels="{'env':'master', 'cluster': '5049'}"
+master2.5049.internal openshift_hostname=master2.5049.internal openshift_node_labels="{'env':'master', 'cluster': '5049'}"
+master3.5049.internal openshift_hostname=master3.5049.internal openshift_node_labels="{'env':'master', 'cluster': '5049'}"
 
 ## These are infranodes
-infranode1.GUID.internal openshift_hostname=infranode1.GUID.internal  openshift_node_labels="{'env':'infra', 'cluster': 'GUID'}"
-infranode2.GUID.internal openshift_hostname=infranode2.GUID.internal  openshift_node_labels="{'env':'infra', 'cluster': 'GUID'}"
+infranode1.5049.internal openshift_hostname=infranode1.5049.internal  openshift_node_labels="{'env':'infra', 'cluster': '5049'}"
+infranode2.5049.internal openshift_hostname=infranode2.5049.internal  openshift_node_labels="{'env':'infra', 'cluster': '5049'}"
 
 ## These are regular nodes
-node1.GUID.internal openshift_hostname=node1.GUID.internal  openshift_node_labels="{'client':'alpha', 'cluster': 'GUID'}"
-node2.GUID.internal openshift_hostname=node2.GUID.internal  openshift_node_labels="{'client':'beta', 'cluster': 'GUID'}"
-node3.GUID.internal openshift_hostname=node3.GUID.internal  openshift_node_labels="{'client':'common', 'cluster': 'GUID'}"
+node1.5049.internal openshift_hostname=node1.5049.internal  openshift_node_labels="{'client':'alpha', 'cluster': '5049'}"
+node2.5049.internal openshift_hostname=node2.5049.internal  openshift_node_labels="{'client':'beta', 'cluster': '5049'}"
+node3.5049.internal openshift_hostname=node3.5049.internal  openshift_node_labels="{'client':'common', 'cluster': '5049'}"
 
 [nfs]
-support1.GUID.internal openshift_hostname=support1.GUID.internal
+support1.5049.internal openshift_hostname=support1.5049.internal
+

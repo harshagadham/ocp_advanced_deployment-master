@@ -5,6 +5,12 @@
     - name: All GUID env variable
       shell: export GUID=`hostname | cut -d"." -f2`; echo "export GUID=$GUID" >> $HOME/.bashrc
 
+- name: Replace GUID variable in the hosts file
+  hosts: localhost
+  tasks:
+     - name: Replace GUID in the hosts file
+       shell: sed -i 's/GUID/5409/g' hosts
+
 - name: Verify Installation and Configuration of Docker
   hosts: nodes
   tasks:
