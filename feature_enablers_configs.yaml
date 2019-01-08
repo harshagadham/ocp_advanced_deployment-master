@@ -1,0 +1,40 @@
+### Hosts File Configurations
+host_inventory_vars:
+ - attribute: 'ocp_release'
+   value: 3.11.56
+ - attribute: 'ocp_image_tag'
+   value: 'v3.11.56'
+ - attribute: 'ocp_package_version'
+   value: '-3.11.56'
+ - attribute: 'ocp_enable_olm'
+   value: true
+ - attribute: 'ocp_disable_check'
+   value: 'disk_availability,memory_availability,docker_image_availability'
+ - attribute: "ocp_sdn_network_plugin_name"
+   value: 'redhat/openshift-ovs-subnet'
+ - attribute: 'ocp_hosted_prometheus_deploy'
+   value: true
+ - attribute: 'ocp_cluster_monitoring_operator_install'
+   value: true
+ - attribute: 'ocp_install_metrics'
+   value: true
+ - attribute: 'ocp_install_logging'
+   value: true
+ - attribute: 'ocp_enable_service_catalog'
+   value: true
+ - attribute: 'ocp_template_service_broker_install'
+   value: true
+ - attribute: 'ocp_ansible_service_broker_install'
+   value: true
+ - attribute: 'ocp_master_cluster_hostname'
+   value: 'loadbalancer1.GUID.internal'
+ - attribute: 'ocp_master_cluster_public_hostname'
+   value: 'loadbalancer1.GUID.example.opentlc.com'
+ - attribute: 'ocp_master_default_subdomain'
+   value: 'apps.GUID.example.opentlc.com'
+ - attribute: 'ocp_osm_cluster_network_cidr'
+   value: '10.1.0.0/16'
+ - attribute: 'ocp_openshift_portal_net'
+   value: '172.30.0.0/16'
+
+
