@@ -1,13 +1,7 @@
 ### Hosts File Configurations
 host_inventory_vars:
  - attribute: 'ocp_release'
-   value: 3.11.56
- - attribute: 'ocp_image_tag'
-   value: 'v3.11.56'
- - attribute: 'ocp_package_version'
-   value: '-3.11.56'
- - attribute: 'ocp_enable_olm'
-   value: true
+   value: 'v3.11'
  - attribute: 'ocp_disable_check'
    value: 'disk_availability,memory_availability,docker_image_availability'
  - attribute: "ocp_sdn_network_plugin_name"
@@ -36,5 +30,9 @@ host_inventory_vars:
    value: '10.1.0.0/16'
  - attribute: 'ocp_openshift_portal_net'
    value: '172.30.0.0/16'
+ - attribute: 'ocp_oreg_auth_user'
+   value: '{{ oreg_auth_user }}'
+ - attribute: 'ocp_oreg_auth_password'
+   value: '{{ oreg_auth_password }}'
 
 

@@ -15,16 +15,6 @@ deployment_type=openshift-enterprise
 
 openshift_disable_check=OCP_DISABLE_CHECK
 
-# OpenShift Version:
-# If you modify the openshift_image_tag or the openshift_pkg_version variables after the cluster is set up, then an upgrade can be triggered, resulting in downtime.
-# If openshift_image_tag is set, its value is used for all hosts in system container environments, even those that have another version installed. If
-# Use this variable to specify a container image tag to install or configure.
-openshift_image_tag=OCP_IMAGE_TAG
-
-# Use this variable to specify an RPM version to install or configure.
-openshift_pkg_version=OCP_PACKAGE_VERSION
-openshift_release=OCP_RELEASE
-
 # Default node selectors
 osm_default_node_selector='client=common'
 openshift_hosted_infra_selector="env=infra"
@@ -36,19 +26,13 @@ openshift_node_groups=[{'name': 'node-config-master', 'labels': ['node-role.kube
 # See: https://github.com/nickhammond/ansible-logrotate
 logrotate_scripts=[{"name": "syslog", "path": "/var/log/cron\n/var/log/maillog\n/var/log/messages\n/var/log/secure\n/var/log/spooler\n", "options": ["daily", "rotate 7","size 500M", "compress", "sharedscripts", "missingok"], "scripts": {"postrotate": "/bin/kill -HUP `cat /var/run/syslogd.pid 2> /dev/null` 2> /dev/null || true"}}]
 
-# Deploy Operator Lifecycle Manager Tech Preview
-openshift_enable_olm=OCP_ENABLE_OLM
-
 ###########################################################################
 ### OpenShift Registries Locations
 ###########################################################################
 
 oreg_url=registry.redhat.io/openshift3/ose-${component}:${version}
-oreg_auth_user=REPLACE_ME
-oreg_auth_password=REPLACE_ME
-
-# For Operator Framework Images
-openshift_additional_registry_credentials=[{'host':'registry.connect.redhat.com','user':'REPLACE_ME','password':'REPLACE_ME','test_image':'mongodb/enterprise-operator:0.3.2'}]
+oreg_auth_user=OCP_OREG_AUTH_USER
+oreg_auth_password=OCP_OREG_AUTH_PASSWORD
 
 openshift_examples_modify_imagestreams=true
 
