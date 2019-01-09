@@ -11,12 +11,21 @@
         group: nfsnobody
         mode: 0777
        with_sequence: start=1 end=2
+     
+     - name: Create File openshift-uservols.exports
+       file: 
+        dest: /etc/exports.d/openshift-uservols.exports
+        owner: nfsnobody
+        group: nfsnobody
+        mode: 0777
 
      - name: Exports Vars
-       shell: "echo /srv/nfs/user-vols/pv{{ item }} *(rw,root_squash) >> /etc/exports.d/openshift-uservols.exports"
+       lineinfile: 
+         path: /etc/exports.d/openshift-uservols.exports
+         line: "/srv/nfs/user-vols/pv{{ item }} *(rw,root_squash)"
        with_sequence: start=1 end=2
 
-     - name: Restarting NFS Server...
+     - name: Restarting NFS Server
        shell: systemctl restart nfs-server
 
 #- name: Create 25 definitions files for PVs 5G size
