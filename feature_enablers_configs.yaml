@@ -21,7 +21,7 @@ host_inventory_vars:
  - attribute: 'ocp_ansible_service_broker_install'
    value: true
  - attribute: 'ocp_master_cluster_hostname'
-   value: 'loadbalancer1.GUID.internal'
+   value: 'loadbalancer.GUID.internal'
  - attribute: 'ocp_master_cluster_public_hostname'
    value: 'loadbalancer.GUID.example.opentlc.com'
  - attribute: 'ocp_master_default_subdomain'
