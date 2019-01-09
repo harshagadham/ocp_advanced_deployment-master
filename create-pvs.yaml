@@ -32,15 +32,6 @@
 - name: Create PV Def files
   hosts: localhost
   tasks:
-     - name: Create 25 definitions files for PVs 5G size and ReadWriteOnce
-       file: 
-        dest: /srv/nfs/user-vols/pv{{ item }} 
-        state: directory
-        owner: nfsnobody
-        group: nfsnobody
-        mode: 0777
-       with_sequence: start=1 end=2
-
      - name: Register GUID variable
        shell: hostname|awk -F. '{print $2}'
        register: guid_val
@@ -50,13 +41,13 @@
         dest: ./pvs
         state: directory
 
-     - name: Create 25 definitions files for PVs 5G size
+     - name: Create 25 definitions files for PVs 5G size and ReadWriteOnce
        template:
          src: ./templates/pv_5g.j2
          dest: ./pvs/pv{{ item }}.yml
        with_sequence: start=1 end=25
 
-     - name: Create 25 definitions files for PVs 10G size
+     - name: Create 25 definitions files for PVs 10G size and ReadWriteMany
        template:
          src: ./templates/pv_10g.j2
          dest: ./pvs/pv{{ item }}.yml

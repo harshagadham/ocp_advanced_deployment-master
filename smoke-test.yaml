@@ -1,0 +1,9 @@
+---
+- name: Create Project
+  hosts: localhost
+  tasks:
+     - name: Create namespace smoke-test
+       shell: oc new-project smoke-test
+
+     - name: Add new application to namespace
+       shell: oc new-app nodejs-mongo-persistent
