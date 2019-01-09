@@ -10,7 +10,7 @@
         owner: nfsnobody
         group: nfsnobody
         mode: 0777
-       with_sequence: start=1 end=2
+       with_sequence: start=1 end=4
      
      - name: Create File openshift-uservols.exports
        file: 
@@ -63,4 +63,4 @@
        with_sequence: start=3 end=4
     
      - name: Create 25 definitions files for PVs 10G size
-       shell: cat /root/pvs/* | oc create -f -
+       shell: cat ./pvs/* | oc create -f -
