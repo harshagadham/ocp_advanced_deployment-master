@@ -6,13 +6,13 @@
   },
   "spec": {
     "capacity": {
-        "storage": "5Gi"
+        "storage": "10Gi"
     },
-    "accessModes": [ "ReadWriteOnce" ],
+    "accessModes": [ "ReadWriteMany" ],
     "nfs": {
         "path": "/srv/nfs/user-vols/pv{{ item }}",
         "server": "support1.{{ guid_val.stdout }}.internal"
     },
-    "persistentVolumeReclaimPolicy": "Recycle"
+    "persistentVolumeReclaimPolicy": "Retain"
   }
 }

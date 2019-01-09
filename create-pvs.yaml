@@ -45,14 +45,22 @@
        shell: hostname|awk -F. '{print $2}'
        register: guid_val
 
+     - name: Create PVS Directory
+       file: 
+        dest: ./pvs
+        state: directory
+
      - name: Create 25 definitions files for PVs 5G size
        template:
          src: ./templates/pv_5g.j2
          dest: ./pvs/pv{{ item }}.yml
        with_sequence: start=1 end=2
 
-#- name: Create 25 definitions files for PVs 10G size
-
-#- name: Create all PVs from definitions files
-
-#- name: Fix NFS Persistent Volume Recycling
+     - name: Create 25 definitions files for PVs 10G size
+       template:
+         src: ./templates/pv_10g.j2
+         dest: ./pvs/pv{{ item }}.yml
+       with_sequence: start=3 end=4
+    
+     - name: Create 25 definitions files for PVs 10G size
+       shell: cat /root/pvs/* | oc create -f -
