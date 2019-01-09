@@ -4,11 +4,12 @@
   become: true
   tasks:
      - name: Create Dirs
-       file: dest=/srv/nfs/user-vols/pv{{ item }} 
-       state: directory
-       owner: nfsnobody
-       group: nfsnobody
-       mode: 0777
+       file: 
+        dest: /srv/nfs/user-vols/pv{{ item }} 
+        state: directory
+        owner: nfsnobody
+        group: nfsnobody
+        mode: 0777
        with_sequence: start=1 end=2
 
      - name: Exports Vars
