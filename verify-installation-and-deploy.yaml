@@ -42,8 +42,8 @@
 - name: Execute the openshift-ansible prerequisites
   import_playbook: /usr/share/ansible/openshift-ansible/playbooks/prerequisites.yml
 
-#- name: Execute the openshift-ansible Deployer
-#  import_playbook: ???
+- name: Execute the openshift-ansible Deployer
+  import_playbook: /usr/share/ansible/openshift-ansible/playbooks/deploy_cluster.yml
 
 #- name: Verify OpenShift Cluster
 #  hosts: masters[0]
