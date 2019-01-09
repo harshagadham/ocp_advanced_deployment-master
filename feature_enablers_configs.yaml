@@ -23,7 +23,7 @@ host_inventory_vars:
  - attribute: 'ocp_master_cluster_hostname'
    value: 'loadbalancer1.GUID.internal'
  - attribute: 'ocp_master_cluster_public_hostname'
-   value: 'loadbalancer1.GUID.example.opentlc.com'
+   value: 'loadbalancer.GUID.example.opentlc.com'
  - attribute: 'ocp_master_default_subdomain'
    value: 'apps.GUID.example.opentlc.com'
  - attribute: 'ocp_osm_cluster_network_cidr'
