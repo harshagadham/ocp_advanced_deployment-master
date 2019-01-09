@@ -18,6 +18,7 @@
         owner: nfsnobody
         group: nfsnobody
         mode: 0777
+        state: present
 
      - name: Exports Vars
        lineinfile: 
@@ -28,8 +29,27 @@
      - name: Restarting NFS Server
        shell: systemctl restart nfs-server
 
-#- name: Create 25 definitions files for PVs 5G size
-#  hosts: localhost
+- name: Create PV Def files
+  hosts: localhost
+  tasks:
+     - name: Create 25 definitions files for PVs 5G size and ReadWriteOnce
+       file: 
+        dest: /srv/nfs/user-vols/pv{{ item }} 
+        state: directory
+        owner: nfsnobody
+        group: nfsnobody
+        mode: 0777
+       with_sequence: start=1 end=2
+
+     - name: Register GUID variable
+       shell: hostname|awk -F. '{print $2}'
+       register: guid_val
+
+     - name: Create 25 definitions files for PVs 5G size
+       template:
+         src: ./templates/pv_5g.j2
+         dest: ./pvs/pv{{ item }}.yml
+       with_sequence: start=1 end=2
 
 #- name: Create 25 definitions files for PVs 10G size
 
