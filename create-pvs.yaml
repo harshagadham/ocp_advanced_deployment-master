@@ -10,7 +10,7 @@
         owner: nfsnobody
         group: nfsnobody
         mode: 0777
-       with_sequence: start=1 end=4
+       with_sequence: start=1 end=50
      
      - name: Create File openshift-uservols.exports
        file: 
@@ -24,7 +24,7 @@
        lineinfile: 
          path: /etc/exports.d/openshift-uservols.exports
          line: "/srv/nfs/user-vols/pv{{ item }} *(rw,root_squash)"
-       with_sequence: start=1 end=2
+       with_sequence: start=1 end=50
 
      - name: Restarting NFS Server
        shell: systemctl restart nfs-server
@@ -54,13 +54,13 @@
        template:
          src: ./templates/pv_5g.j2
          dest: ./pvs/pv{{ item }}.yml
-       with_sequence: start=1 end=2
+       with_sequence: start=1 end=25
 
      - name: Create 25 definitions files for PVs 10G size
        template:
          src: ./templates/pv_10g.j2
          dest: ./pvs/pv{{ item }}.yml
-       with_sequence: start=3 end=4
+       with_sequence: start=26 end=50
     
      - name: Create 25 definitions files for PVs 10G size
        shell: cat ./pvs/* | oc create -f -
