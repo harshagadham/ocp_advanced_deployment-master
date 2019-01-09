@@ -1,0 +1,28 @@
+---
+- name: Create PVs for Users
+  hosts: nfs
+  become: true
+  tasks:
+     - name: Create Dirs
+       file: dest=/srv/nfs/user-vols/pv{{ item }} 
+       state: directory
+       owner: nfsnobody
+       group: nfsnobody
+       mode: 0777
+       with_sequence: start=1 end=2
+
+     - name: Exports Vars
+       shell: echo /srv/nfs/user-vols/pv{{ item }} *(rw,root_squash) >> /etc/exports.d/openshift-uservols.exports
+       with_sequence: start=1 end=2
+
+     - name: Restarting NFS Server...
+       shell: systemctl restart nfs-server
+
+#- name: Create 25 definitions files for PVs 5G size
+#  hosts: localhost
+
+#- name: Create 25 definitions files for PVs 10G size
+
+#- name: Create all PVs from definitions files
+
+#- name: Fix NFS Persistent Volume Recycling
