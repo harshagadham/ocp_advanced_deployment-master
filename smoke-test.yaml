@@ -6,10 +6,10 @@
        shell: oc new-project smoke-test
 
      - name: Add new application to namespace
-       shell: oc new-app nodejs-mongo-persistent
+       shell: oc new-app httpd-example
 
      - name: wait for pods to come up
        shell: oc get pods -o json
+       retries: 30
        register: openshift_get_pods
-       until: openshift_get_pods.stdout|from_json|json_query('items[*].status.phase')|unique == ["Running", "Completed"]
-    
+       until: openshift_get_pods.stdout|from_json|json_query('items[*].status.phase')|unique == ["Running", "Succeeded"]
