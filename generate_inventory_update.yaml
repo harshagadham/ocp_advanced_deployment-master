@@ -6,6 +6,8 @@
   tasks:
      - name: Sudo
        shell: sudo -s
+     - name: Disable Host checking
+       shell: export ANSIBLE_HOST_KEY_CHECKING=False
      - name: Replace openshift release version
        replace:
           path: ./hosts

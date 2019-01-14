@@ -1,18 +1,21 @@
 ---
 - name: Prepare GUID environment variable across all hosts
   hosts: all
+  become: true
   tasks:
     - name: All GUID env variable
       shell: export GUID=`hostname | cut -d"." -f2`; echo "export GUID=$GUID" >> $HOME/.bashrc
 
 - name: Verify Installation and Configuration of Docker
   hosts: nodes
+  become: true
   tasks:
     - name: docker restart
       shell: systemctl restart docker
 
 - name: Verify NFS Shared Volumes on Hosts
   hosts: nfs
+  become: true
   tasks:
     - shell: exportfs
       register: output
@@ -23,6 +26,7 @@
 
 - name: Install packages and config auth
   hosts: localhost
+  become: true
   tasks:
     - name: Required packages are present
       shell: yum repolist
@@ -47,6 +51,7 @@
 
 - name: Verify OpenShift Cluster
   hosts: masters[0]
+  become: true
   tasks:
     - name: copy the .kube directory from master1 to your bastion
       fetch:
@@ -56,6 +61,7 @@
 
 - name: Post installation configuration
   hosts: localhost
+  become: true
   tasks:
     - name: make sure you are system:dmin
       shell: oc whoami | grep system:admin
