@@ -1,5 +1,0 @@
-- name: Replace GUID variable in the hosts file
-  hosts: localhost
-  tasks:
-     - name: Replace GUID in the hosts file
-       shell: sed -i 's/GUID/'$GUID'/g' hosts

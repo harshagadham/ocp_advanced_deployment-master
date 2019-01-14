@@ -1,8 +1,11 @@
 - name: Replace Variables in Hosts file
   hosts: localhost
+  become: true
   vars_files:
     - feature_enablers_configs.yaml
   tasks:
+     - name: Sudo
+       shell: sudo -s
      - name: Replace openshift release version
        replace:
           path: ./hosts
@@ -13,6 +16,8 @@
      - name: Replace GUID in the hosts file
        shell: sed -i 's/GUID/'{{ GUID }}'/g' ./hosts
      - name: Copy a new hosts file to /etc/ansible/hosts
-       shell: cp ./hosts /etc/ansible/hosts
+       copy: 
+         src: ./hosts
+         dest: /etc/ansible/hosts
           
     

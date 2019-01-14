@@ -5,7 +5,7 @@ host_inventory_vars:
  - attribute: 'ocp_disable_check'
    value: 'disk_availability,memory_availability,docker_image_availability'
  - attribute: "ocp_sdn_network_plugin_name"
-   value: 'redhat/openshift-ovs-subnet'
+   value: 'redhat/openshift-ovs-multitenant'
  - attribute: 'ocp_hosted_prometheus_deploy'
    value: true
  - attribute: 'ocp_cluster_monitoring_operator_install'
