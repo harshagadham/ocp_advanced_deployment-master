@@ -4,6 +4,8 @@
   vars_files:
     - feature_enablers_configs.yaml
   tasks:
+     - name: Disable Host checking at user level
+       shell: export ANSIBLE_HOST_KEY_CHECKING=False
      - name: Sudo
        shell: sudo -s
      - name: Disable Host checking
